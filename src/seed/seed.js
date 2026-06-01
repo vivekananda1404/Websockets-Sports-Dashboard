@@ -497,16 +497,16 @@ function getMatchEntry(entry, matchMap) {
 }
 
 // NOTE: Score updates are not part of this codebase yet.
-// async function updateMatchScore(matchId, homeScore, awayScore) {
-//   const response = await fetch(`${API_URL}/matches/${matchId}/score`, {
-//     method: "PATCH",
-//     headers: { "content-type": "application/json" },
-//     body: JSON.stringify({ homeScore, awayScore }),
-//   });
-//   if (!response.ok) {
-//     throw new Error(`Failed to update score: ${response.status}`);
-//   }
-// }
+async function updateMatchScore(matchId, homeScore, awayScore) {
+  const response = await fetch(`${API_URL}/matches/${matchId}/score`, {
+    method: "PATCH",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ homeScore, awayScore }),
+  });
+  if (!response.ok) {
+    throw new Error(`Failed to update score: ${response.status}`);
+  }
+}
 
 function randomMatchDelay() {
     const range = NEW_MATCH_DELAY_MAX_MS - NEW_MATCH_DELAY_MIN_MS;
